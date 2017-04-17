@@ -1,0 +1,2 @@
+D:\Data\Dev\CitiBikeMeters\citibike\obj\Debug\citiBike.njsprojResolveAssemblyReference.cache
+D:\Data\Dev\CitiBikeMeters\citibike\bin\Microsoft.NodejsTools.WebRole.dll
