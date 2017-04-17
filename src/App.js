@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import StationManager from './actions/StationManager';
 import Map from './actions/Maps';
+import Config from './Config';
 import './App.css';
 import { Line } from 'rc-progress';
 
@@ -36,8 +37,8 @@ class App extends Component {
                 })
                 }
             </select>
-            <button onClick={() => this.setState({ station: this.state.stations_dictionary['3288'] })} >Home</button>
-            <button onClick={() => this.setState({ station: this.state.stations_dictionary['487'] })} >Work</button>
+            <button onClick={() => this.setState({ station: this.state.stations_dictionary[Config.homeStation] })} >Home</button>
+            <button onClick={() => this.setState({ station: this.state.stations_dictionary[Config.workStation] })} >Work</button>
             <Line percent={percentFull} strokeWidth="4" strokeColor={meterColor}  />
             <Map style={{ width: '300px', height: '500px' }} current_station={this.state.station} stations={this.state.stations} />
            

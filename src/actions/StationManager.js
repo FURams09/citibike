@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import axios from   'axios';
 import geojsonTools from 'geojson-tools';
+import Config from '../Config'
 const StationManager = {
 
     getStations() {
@@ -57,7 +58,7 @@ function getPercentageFull(bikes, racks) {
     return Math.floor(bikes / (bikes + racks) * 100);
 }
 function sortStations(stations) {
-    let starting_station = [40.780174, -73.947844]
+    let starting_station = Config.homeGPS;
     function compare(a, b) {
         let distanceA = geojsonTools.getDistance([starting_station, [a.lat, a.lon]])
         let distanceB = geojsonTools.getDistance([starting_station, [b.lat, b.lon]])
