@@ -1,5 +1,5 @@
 ﻿import axios from   'axios';
-
+import geojsonTools from 'geojson-tools';
 const StationManager = {
     getStations() {
         axios.get('https://gbfs.citibikenyc.com/gbfs/en/station_information.json')
@@ -40,23 +40,28 @@ function buildStationList(state, station_information, station_status) {
             let this_station_status = station_status[j];
             if (this_station.station_id === this_station_status.station_id) {
                 //station_list[this_station.station_id] = { station_id: this_station.station_id, name: this_station.name, bikes: this_station_status.num_bikes_available, racks: this_station_status.num_docks_available, gps: { coordinates: [this_station.lon, this_station.lat] } };
-                station_list.push( { station_id: this_station.station_id, name: this_station.name, bikes: this_station_status.num_bikes_available, racks: this_station_status.num_docks_available, gps: [this_station.lon, this_station.lat] });
+                station_list.push( { station_id: this_station.station_id, name: this_station.name, bikes: this_station_status.num_bikes_available, racks: this_station_status.num_docks_available, lng: this_station.lon, lat: this_station.lat });
             }
         }
     };
     let first_station = station_list[0]; 
     let percentage_full = getPercentageFull(first_station.bikes, first_station.racks);
-    state.setState({ stations: station_list, station_id: first_station.station_id, bikes: first_station.bikes, racks: first_station.racks, percentFull: percentage_full, gps: first_station.gps });
+    state.setState({ stations: station_list, station_id: first_station.station_id, bikes: first_station.bikes, racks: first_station.racks, percentFull: percentage_full, lng: first_station.lng, lat: first_station.lat });
 }
 
 function getPercentageFull(bikes, racks) {
     return Math.floor(bikes / (bikes + racks) * 100);
 }
-function sortStations(stations, sortField = 'name') {
+function sortStations(stations) {
+    let starting_station = [40.780174, -73.947844]
+    console.log(geojsonTools.getDistance([starting_station, [11,11]]))
     function compare(a, b) {
-        if (a[sortField] < b[sortField])
+        console.log(a)
+        let distanceA = geojsonTools.getDistance([starting_station, [a.lat, a.lon]])
+        let distanceB = geojsonTools.getDistance([starting_station, [b.lat, b.lon]])
+        if (distanceA < distanceB)
             return -1;
-        if (a[sortField] > b[sortField])
+        if (distanceA > distanceB)
             return 1;
         return 0;
     }

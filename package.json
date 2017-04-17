@@ -4,10 +4,13 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.1",
+    "geojson-tools": "^0.2.2",
     "google-map-react": "^0.24.0",
+    "google-maps": "^3.2.1",
     "rc-progress": "^2.1.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-load-script": "0.0.2",
     "react-table": "^5.5.1"
   },
   "devDependencies": {

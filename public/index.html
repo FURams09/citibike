@@ -15,20 +15,22 @@
     <script type="text/javascript" src="javascript/jquery-3.2.0.js"></script>
     <script type="text/javascript" src="javascript/maps.js" ></script>
     <script type="text/javascript">
-        function buildMap() { $(buildMapForStation(this.state.gps[0], this.state.gps[1], this.state.stations)) }
+        function buildMap() {
+            //if ($('script[src^="http://maps.googleapis.com"]').length === 0) {
+                
+            //    $.getScript('http://maps.googleapis.com/maps/api/js?key=' + this.state.googleMapsKey).then(() => {
+            //       $( buildMapForStation(this.state.gps[0], this.state.gps[1], this.state.stations))
+            //    })
+            //} else {
+               $( buildMapForStation.call(this, this.state.lng, this.state.lat , this.state.stations))
+            //}  
+        }
     </script>
 
-    <style>
-        .stationMap {
-            width: 300px;
-            height: 500px;
-        }
-    </style>
     <title>CitiBike App</title>
   </head>
   <body>
     <div id="root"></div>
-    <div id="stationMap" class="stationMap" />
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,7 +41,5 @@
       To begin the development, run `npm start`.
       To create a production bundle, use `npm run build`.
     -->
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCKmPpVHlY7EVmzISiZwkC - C33wRqrt4vw" ></script>
-      
   </body>
 </html>

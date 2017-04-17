@@ -25,14 +25,16 @@
     <Content Include="src\App.css" />
     <Content Include="src\index.css" />
     <Content Include="src\logo.svg" />
-    <Compile Include="components\Maps.js" />
+    <Compile Include="public\javascript\jquery-3.2.0.js" />
+    <Compile Include="public\javascript\maps.js" />
     <Compile Include="src\actions\StationManager.js" />
     <Compile Include="src\App.js" />
     <Compile Include="src\App.test.js" />
+    <Compile Include="src\Config.js" />
     <Compile Include="src\index.js" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="components\" />
+    <Folder Include="public\javascript\" />
     <Folder Include="src\actions\" />
     <Folder Include="public" />
     <Folder Include="src" />
