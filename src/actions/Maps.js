@@ -56,7 +56,7 @@ var mapScript = <div />
 
 if (this.state.mapsAPILoaded === false) {
 //never loaded the script. 
-mapScript = <Scripts url= { 'http://maps.googleapis.com/maps/api/js?key=' + this.state.googleMapsKey }
+mapScript = <Scripts url= { 'https://maps.googleapis.com/maps/api/js?key=' + this.state.googleMapsKey }
 onLoad={() => {
 if (this.state.mapsAPILoaded === false) {
 window.buildMap.call(this);
