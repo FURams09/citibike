@@ -44,8 +44,8 @@ function buildStationList(state, station_information, station_status) {
         for (let j = 0; j < station_status.length; j++) {
             let this_station_status = station_status[j];
             if (this_station.station_id === this_station_status.station_id) {
-                station_dictionary[this_station.station_id] = { station_id: this_station.station_id, name: this_station.name, bikes: this_station_status.num_bikes_available, racks: this_station_status.num_docks_available, lng: this_station.lon, lat: this_station.lat  };
-                station_list.push( { station_id: this_station.station_id, name: this_station.name, bikes: this_station_status.num_bikes_available, racks: this_station_status.num_docks_available, lng: this_station.lon, lat: this_station.lat });
+                station_dictionary[this_station.station_id] = { station_id: this_station.station_id, name: this_station.name, bikes: this_station_status.num_bikes_available, racks: this_station_status.num_docks_available, lng: this_station.lon, lat: this_station.lat, sortOrder: i  };
+                station_list.push( { station_id: this_station.station_id, name: this_station.name, bikes: this_station_status.num_bikes_available, racks: this_station_status.num_docks_available, lng: this_station.lon, lat: this_station.lat, sortOrder: i});
             }
         }
     };
